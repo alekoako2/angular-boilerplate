@@ -7,7 +7,8 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "changeDetection": "OnPush"
         }
       },
       "root": "",
@@ -63,6 +64,14 @@
               ],
               "serviceWorker": true,
               "ngswConfigPath": "ngsw-config.json"
+            },
+            "hmr": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.hmr.ts"
+                }
+              ]
             }
           }
         },
@@ -74,6 +83,10 @@
           "configurations": {
             "production": {
               "browserTarget": "angular-boilerplate:build:production"
+            },
+            "hmr": {
+              "hmr": true,
+              "browserTarget": "angular-boilerplate:build:hmr"
             }
           }
         },
